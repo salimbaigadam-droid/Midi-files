@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIDI to Roblox Piano Key Map Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎹 MIDI to Roblox Piano</h1>
+            <p>Convert MIDI files into Roblox Luau piano key maps</p>
+        </div>
+
+        <div class="content">
+            <!-- Upload Section -->
+            <div class="section">
+                <h2>📁 Upload MIDI File</h2>
+                
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📀</div>
+                    <p><strong>Drag & drop your MIDI file here</strong></p>
+                    <p style="color: #666; margin-top: 10px;">or</p>
+                    <input type="file" id="fileInput" accept=".mid,.midi">
+                    <p class="file-input" style="color: #667eea; margin-top: 10px; cursor: pointer;">Click to browse</p>
+                </div>
+
+                <div class="info-box">
+                    💡 Supports standard MIDI files (.mid, .midi). The converter will extract note events and map them to Roblox piano keys (C4-C8).
+                </div>
+
+                <div class="settings">
+                    <div class="setting-group">
+                        <label for="octaveOffset">Octave Offset:</label>
+                        <input type="number" id="octaveOffset" value="0" min="-2" max="2" step="1">
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="tempo">Tempo Multiplier:</label>
+                        <input type="number" id="tempo" value="1.0" min="0.5" max="2.0" step="0.1">
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="tableName">Table Name:</label>
+                        <input type="text" id="tableName" value="pianoNotes" placeholder="e.g., myPianoSong">
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button class="btn-primary" id="convertBtn" disabled>🎵 Convert to Luau</button>
+                    <button class="btn-secondary" id="clearBtn">Clear</button>
+                </div>
+
+                <div id="status" class="status"></div>
+            </div>
+
+            <!-- Output Section -->
+            <div class="section">
+                <h2>📝 Luau Output</h2>
+                
+                <div id="stats" class="stats" style="display: none;">
+                    <div class="stat-box">
+                        <strong>Notes:</strong>
+                        <span id="noteCount">0</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong>Duration:</strong>
+                        <span id="duration">0s</span>
+                    </div>
+                </div>
+
+                <div class="output-area" id="output" style="display: none;">-- Luau code will appear here...</div>
+
+                <div class="controls" style="margin-top: 15px;">
+                    <button class="btn-primary" id="copyBtn" style="display: none;">📋 Copy Code</button>
+                    <button class="btn-secondary" id="downloadBtn" style="display: none;">⬇️ Download</button>
+                </div>
+
+                <div id="pianoPreview" class="piano-preview" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Made for Roblox Developers • MIDI Parser v1.0</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
